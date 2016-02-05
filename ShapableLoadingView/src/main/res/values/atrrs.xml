@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="ShapableLoadingView">
+    <attr name="numbers" format="integer"/>
+    <attr name="size_cycle_time" format="integer"/>
+    <attr name="rotate_cycle_time" format="integer"/>
+    <attr name="movement_cycle_time" format="integer"/>
+    <attr name="shape_colors" format="reference"/>
+    <attr name="shape_size" format="dimension"/>
+    <attr name="enable_size_animation" format="boolean"/>
+    <attr name="enable_rotate_animation" format="boolean"/>
+    <attr name="min_shape_size" format="dimension"/>
+    <attr name="max_shape_size" format="dimension"/>
+    <attr name="path" format="string"/>
+  </declare-styleable>
+</resources>
