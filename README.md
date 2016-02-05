@@ -14,12 +14,12 @@ ShapableLoadingView 是高度可配置且可自定义的进度条控件，你可
 
 ### 1. 添加依赖
 
-`
+```
 dependencies {
-    ...
-    compile 'com.github.chaossss:ShapableLoadingView:1.0.1'
+	...
+	compile 'com.github.chaossss:ShapableLoadingView:1.0.1'
 }
-`
+```
 
 ### 2. 创建 xml 代码
 
