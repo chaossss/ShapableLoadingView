@@ -12,12 +12,12 @@ ShapableLoadingView is a highly configurable and customized library to do loadin
 
 ### 1. Add dependency
 
-`
+```
 dependencies {
-    ...
-    compile 'com.github.chaossss:ShapableLoadingView:1.0.1'
+	...
+	compile 'com.github.chaossss:ShapableLoadingView:1.0.1'
 }
-`
+```
 
 ### 2. Add your xml code
 
