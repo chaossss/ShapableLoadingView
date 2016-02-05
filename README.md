@@ -76,7 +76,7 @@ such as:
 ## 自定义
 
 ### 1. 创建你需要的动画路径或图形
-```
+```java
 public class YourPath extends AbstractPath {
     public YourPath(Point center, int pathWidth, int pathHeight, int maxBallSize) {
         super(center, pathWidth, pathHeight, maxBallSize);
