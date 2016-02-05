@@ -74,7 +74,7 @@ the attr "shape_type", available:
 ## Customize
 
 ### 1. Create your own Path/Shape/both of them
-```
+```java
 public class YourPath extends AbstractPath {
     public YourPath(Point center, int pathWidth, int pathHeight, int maxBallSize) {
         super(center, pathWidth, pathHeight, maxBallSize);
