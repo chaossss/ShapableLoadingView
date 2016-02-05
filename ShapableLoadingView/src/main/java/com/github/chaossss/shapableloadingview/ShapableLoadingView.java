@@ -101,10 +101,9 @@ public class ShapableLoadingView extends View implements AbstractShapeAnimator.S
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        Path path = PathFactory.makePath(pathType, new Point(w / 2, h / 2), w, h, (int) maxShapeSize);
-        initShapePathAnimator(path);
+    protected void onSizeChanged(int w, int h, int oldW, int oldH) {
+        super.onSizeChanged(w, h, oldW, oldH);
+        initShapePathAnimator(getPath(w, h));
 
         if (sizeAnimationEnabled) {
             initShapeSizeAnimator();
@@ -115,6 +114,10 @@ public class ShapableLoadingView extends View implements AbstractShapeAnimator.S
         }
 
         start();
+    }
+
+    protected Path getPath(int w, int h){
+        return PathFactory.makePath(pathType, new Point(w / 2, h / 2), w, h, (int) maxShapeSize);
     }
 
     private void initShapePathAnimator(Path path) {
@@ -141,8 +144,12 @@ public class ShapableLoadingView extends View implements AbstractShapeAnimator.S
             if (!(shapeColors.length - 1 >= k)) {
                 k = 0;
             }
-            shapes.add(ShapeFactory.getShape(shapeType, (int)shapeSize, shapeColors[k]));
+            shapes.add(getShape(shapeColors[k]));
         }
+    }
+
+    protected Shape getShape(int color){
+        return ShapeFactory.getShape(shapeType, (int)shapeSize, color);
     }
 
     public void start() {

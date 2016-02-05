@@ -24,6 +24,8 @@ public abstract class Shape {
         initPoint();
     }
 
+
+
     protected void initPaint(){
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.FILL);
