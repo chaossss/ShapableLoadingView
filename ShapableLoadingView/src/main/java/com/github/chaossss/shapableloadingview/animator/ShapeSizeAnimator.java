@@ -3,7 +3,7 @@ package com.github.chaossss.shapableloadingview.animator;
 import android.animation.ValueAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import com.github.chaossss.shapableloadingview.Star;
+import com.github.chaossss.shapableloadingview.factory.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
 /**
  * Created by chaossss on 2016/2/5.
  */
-public class StarSizeAnimator extends AbstractStarAnimator {
+public class ShapeSizeAnimator extends AbstractShapeAnimator {
     private int duration;
-    private float minStarSize;
-    private float maxStarSize;
+    private float minShapeSize;
+    private float maxShapeSize;
     private List<ValueAnimator> animators;
 
-    public StarSizeAnimator(int duration, float minStarSize, float maxStarSize) {
+    public ShapeSizeAnimator(int duration, float minShapeSize, float maxShapeSize) {
         this.duration = duration;
-        this.minStarSize = minStarSize;
-        this.maxStarSize = maxStarSize;
+        this.minShapeSize = minShapeSize;
+        this.maxShapeSize = maxShapeSize;
         init();
     }
 
@@ -31,8 +31,8 @@ public class StarSizeAnimator extends AbstractStarAnimator {
     @Override
     public void start() {
         animators.clear();
-        for (int i = 0; i < stars.size(); i++) {
-            createStarAnimatorAndStart(stars.get(i), 300 * i);
+        for (int i = 0; i < shapes.size(); i++) {
+            createShapeAnimatorAndStart(shapes.get(i), 300 * i);
         }
     }
 
@@ -49,11 +49,11 @@ public class StarSizeAnimator extends AbstractStarAnimator {
         start();
     }
 
-    private void createStarAnimatorAndStart(Star star, int startDelay) {
+    private void createShapeAnimatorAndStart(Shape shape, int startDelay) {
         ValueAnimator valueAnimator = new ValueAnimator();
         valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        valueAnimator.addUpdateListener(new StarUpdateListener(star));
-        valueAnimator.setFloatValues(minStarSize, maxStarSize);
+        valueAnimator.addUpdateListener(new ShapeUpdateListener(shape));
+        valueAnimator.setFloatValues(minShapeSize, maxShapeSize);
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setStartDelay(startDelay);
@@ -62,17 +62,17 @@ public class StarSizeAnimator extends AbstractStarAnimator {
         valueAnimator.start();
     }
 
-    private class StarUpdateListener implements ValueAnimator.AnimatorUpdateListener {
-        private Star star;
+    private class ShapeUpdateListener implements ValueAnimator.AnimatorUpdateListener {
+        private Shape shape;
 
-        public StarUpdateListener(Star star) {
-            this.star = star;
+        public ShapeUpdateListener(Shape shape) {
+            this.shape = shape;
         }
 
         @Override
         public void onAnimationUpdate(ValueAnimator animation) {
             float value = (float) animation.getAnimatedValue();
-            star.setSize((int) value);
+            shape.setSize((int) value);
         }
     }
 }

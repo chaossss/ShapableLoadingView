@@ -7,7 +7,7 @@ import com.github.chaossss.shapableloadingview.factory.path.Circle;
 import com.github.chaossss.shapableloadingview.factory.path.Diamond;
 import com.github.chaossss.shapableloadingview.factory.path.Infinite;
 import com.github.chaossss.shapableloadingview.factory.path.Square;
-import com.github.chaossss.shapableloadingview.factory.path.Star;
+import com.github.chaossss.shapableloadingview.factory.path.StarPath;
 import com.github.chaossss.shapableloadingview.factory.path.Triangle;
 
 
@@ -32,7 +32,7 @@ public class PathFactory {
             case INFINITE:
                 return new Infinite(center, pathWidth, pathHeight, maxBallSize).draw();
             case STAR:
-                return new Star(center, pathWidth, pathHeight, maxBallSize).draw();
+                return new StarPath(center, pathWidth, pathHeight, maxBallSize).draw();
             case TRIANGLE:
                 return new Triangle(center, pathWidth, pathHeight, maxBallSize).draw();
             case DIAMOND:

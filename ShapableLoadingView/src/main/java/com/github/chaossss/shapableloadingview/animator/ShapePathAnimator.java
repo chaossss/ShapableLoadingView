@@ -6,23 +6,23 @@ import android.graphics.PathMeasure;
 import android.view.animation.BaseInterpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.github.chaossss.shapableloadingview.Star;
+import com.github.chaossss.shapableloadingview.factory.shape.Shape;
 
-public class StarPathAnimator extends AbstractStarAnimator implements ValueAnimator.AnimatorUpdateListener {
+public class ShapePathAnimator extends AbstractShapeAnimator implements ValueAnimator.AnimatorUpdateListener {
     private Path path;
     private float offset;
     private int duration;
     private ValueAnimator valueAnimator;
     private BaseInterpolator interpolator;
 
-    public StarPathAnimator(BaseInterpolator interpolator, Path path, int duration) {
+    public ShapePathAnimator(BaseInterpolator interpolator, Path path, int duration) {
         this.interpolator = interpolator;
         this.path = path;
         this.duration = duration;
         init();
     }
 
-    public StarPathAnimator(Path path, int duration) {
+    public ShapePathAnimator(Path path, int duration) {
         this.path = path;
         this.duration = duration;
         interpolator = new LinearInterpolator();
@@ -45,7 +45,7 @@ public class StarPathAnimator extends AbstractStarAnimator implements ValueAnima
 
     @Override
     public void start() {
-        float size = stars.size();
+        float size = shapes.size();
         offset = 1 / size;
         valueAnimator.start();
     }
@@ -65,22 +65,22 @@ public class StarPathAnimator extends AbstractStarAnimator implements ValueAnima
     public void onAnimationUpdate(ValueAnimator animation) {
         float value = animation.getAnimatedFraction();
 
-        for (int i = 0; i < stars.size(); i++) {
-            updateStar(stars.get(i), value, i, path);
+        for (int i = 0; i < shapes.size(); i++) {
+            updateShape(shapes.get(i), value, i, path);
         }
 
-        if (starAnimatorListener != null) {
-            starAnimatorListener.onUpdate();
+        if (shapeAnimatorListener != null) {
+            shapeAnimatorListener.onUpdate();
         }
     }
 
-    private void updateStar(Star star, float fraction, int position, Path path) {
-        float starFraction = fraction + (position * offset);
-        if (starFraction > 1) {
-            starFraction = starFraction - 1;
+    private void updateShape(Shape shape, float fraction, int position, Path path) {
+        float shapeFraction = fraction + (position * offset);
+        if (shapeFraction > 1) {
+            shapeFraction = shapeFraction - 1;
         }
-        float[] coordinates = getPathCoordinates(path, starFraction);
-        star.setPosition((int) coordinates[0], (int) coordinates[1]);
+        float[] coordinates = getPathCoordinates(path, shapeFraction);
+        shape.setPosition((int) coordinates[0], (int) coordinates[1]);
     }
 
     private float[] getPathCoordinates(Path path, float fraction) {

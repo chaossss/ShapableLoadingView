@@ -6,8 +6,8 @@ import android.graphics.Point;
 /**
  * Created by chaossss on 2016/2/5.
  */
-public class Star extends AbstractPath {
-    public Star(Point center, int pathWidth, int pathHeight, int maxBallSize) {
+public class StarPath extends AbstractPath {
+    public StarPath(Point center, int pathWidth, int pathHeight, int maxBallSize) {
         super(center, pathWidth, pathHeight, maxBallSize);
     }
 
